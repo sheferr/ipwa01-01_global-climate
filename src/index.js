@@ -1,5 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import { createRoot } from 'react-dom/client';
+import Header from './Header';
+import Content from './Content';
+import Footer from './Footer';
 
-ReactDOM.render (<App />, document.getElementById('root'));
+
+createRoot(document.getElementById('header')).render(<Header />);
+
+createRoot(document.getElementById('content')).render(<Content />);
+
+createRoot(document.getElementById('footer')).render(<Footer />);
