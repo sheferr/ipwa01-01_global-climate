@@ -1,17 +1,29 @@
-import React from 'react';
-import AppBar from '@mui/material/AppBar';
-//import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-//import Container from '@mui/material/Container';
-//<AppBar position = "static" color = 'success' className={'alignItems: "center"'} sx={{ maxWidth: '50%', borderRadius: 4 }}>
+import * as React from 'react';
+import Button from '@mui/material/Button';
+//import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+
+/* <Typography
+          component="h2"
+          variant="h4"
+          color="inherit"
+          align="center"
+          noWrap
+          
+          sx={{ flex: 1, pb: 2}}
+        >
+          Global Climate
+        </Typography> */
+
 function HeaderBar() {
   return (
-    <div>
-      <AppBar position = "static" className={'alignItems: "center"'}>
-        <Toolbar disableGutters></Toolbar>
-      </AppBar>
-    </div>
+      <Box sx={{ justifyContent: 'center', textAlign:'center', alignItems: 'center', p: 2}}>
+        <Button size="large" >Startseite</Button>
+        <Button size="large">Über uns</Button>
+        <Button size="large">Kontakt</Button>
+      </Box>
   );
 }
+
 
 export default HeaderBar;
