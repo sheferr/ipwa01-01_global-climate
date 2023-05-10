@@ -1,14 +1,12 @@
 import * as React from 'react';
-import CardMedia from '@mui/material/CardMedia'
-import image from './img/water1.png'
+//import { styled, alpha } from '@mui/material/styles';
+import Paper from '@mui/material/Paper'
 
 export default function CardImage() {
     return (
-        <CardMedia
-            component="img"
-            sx={{ boxShadow: 3, borderRadius: 2, display: {xs: 'none', sm: 'block'} }} 
-            src={image}
-        />
+      <Paper sx={{ position: 'relative', backgroundColor: 'grey.800', color: '#fff', mb: 4, backgroundSize: 'cover', backgroundRepeat: 'center', backgroundPosition: 'center', backgroundImage: 'url(${Image})' }}>
+
+      </Paper>
     );
   }
   

@@ -1,36 +1,80 @@
 import React from 'react';
-//import Paper from '@mui/material/Paper';
-import {createTheme, ThemeProvider} from '@mui/material/styles';
-import Grid from '@mui/material/Grid';
-import CssBaseline from '@mui/material/CssBaseline';
-import Image from './img/windmill-org.jpg';
+import Table from '@mui/material/Table';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import Paper from '@mui/material/Paper';
+import TableHead from '@mui/material/TableHead';
+import TableBody from '@mui/material/TableBody';
+import TableRow from '@mui/material/TableRow';
+import  FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 
-const theme = createTheme();
+import data from './csvjson.json'
 
-export default class Content extends React.Component {
-  render (){
-    return (
-      <ThemeProvider theme={theme}>
-        <Grid container maxWidth="lg" component="main" sx={{ height: '130vh' }}>
-          <CssBaseline />
-          <Grid
-          item
-          xs={false}
-          sm={4}
-          md={12}
-          sx={{
-            backgroundImage: `url(${Image})`,
-            backgroundRepeat: 'no-repeat',
-            backgroundColor: (t) =>
-              t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
-            backgroundSize: 'cover',
-            backgroundPosition: 'bottom',
-          }}
-          />
-        </Grid>
-      </ThemeProvider>
-    )
+const range = (start, end) => {
+  let output = [];
+
+  if (typeof end === 'undefined')
+  {
+    end = start;
+    start = 0;
   }
-  
+
+  for (let i = start; i < end; i ++)
+  {
+    output.push(i);
+  }
+
+  return output;
 }
 
+export default function Content() {
+  const [year, setAge] = React.useState(2019);
+  const yearStart = 1990;
+  const yearEnd = 2022;
+
+  function Form ()
+  {
+    const handleChange = (event) => {
+    setAge(event.target.value);
+  }
+
+  return (
+      <FormControl variant="standard" >
+        <InputLabel id="input_year_id">Jahr</InputLabel>
+        <Select labelId="input_year_id" id="label_year_id" value={year} autoWidth onChange={handleChange} MenuProps={{ PaperProps:{ sx:{ minWidth: 80,  maxHeight: 200, overflow: 'auto'}}}} >
+        {range(yearStart, yearEnd).map((year) => 
+          <MenuItem key={year} value={year}>{year}</MenuItem>
+        )}
+        </Select>
+      </FormControl>
+    )
+  }
+
+  return (
+    <TableContainer component={Paper} sx={{maxHeight: 500, mt: 5}}>
+      <Table stickyHeader aria-label="sticky table">
+        <TableHead>
+          <TableRow>
+            <TableCell align='left'>Land</TableCell>
+            <TableCell align='left'>Ländercode</TableCell>
+            <TableCell align='left'><Form /></TableCell>
+            <TableCell align='left'>Emissionswert</TableCell>
+          </TableRow>
+        </TableHead>
+        {data.map((data,i) => 
+          <TableBody key={i}>
+            <TableRow>
+              <TableCell align='left' >{data['Country Name']}</TableCell>
+              <TableCell align='left' >{data['Country Code']}</TableCell>
+              <TableCell align='left' >{year}</TableCell>
+              <TableCell align='left' >{data[year]}</TableCell>
+            </TableRow>
+          </TableBody>
+        )}
+      </Table>
+    </TableContainer>
+  );
+}
