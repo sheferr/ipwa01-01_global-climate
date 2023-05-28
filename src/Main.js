@@ -6,11 +6,11 @@ import Content from './Content'
 
 
 // <CardImage />
-function Main () {
-    return (   
+function Main() {
+    return (
         <Container maxWidth="lg">
-            <Header/>
-            <Content/>
+            <Header />
+            <Content startYear={'1990'} endYear={'2019'} />
         </Container>
     );
 }
