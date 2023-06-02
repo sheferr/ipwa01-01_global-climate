@@ -11,8 +11,10 @@ import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import TableSortLabel from '@mui/material/TableSortLabel'
+import TextField from '@mui/material/TextField';
 
 import data from './csvjson.json'
+
 
 const range = (start, end) => {
   let output = [];
@@ -28,18 +30,17 @@ export default function Content({ startYear, endYear }) {
   const [order, setOrder] = React.useState('asc');
   const [currYear, setCurrYear] = React.useState(endYear);
   const [isEmissionActive, setEmissionActive] = React.useState(false);
+  const [countryValue, setCountryValue] = React.useState('');
 
   function reorderEmissionByCounterName() {
     setEmissionActive(false);
     if (order === 'asc') {
-      console.log("Set order to desc in (reorderEmissionByCounterName)");
       setOrder('desc');
       setEmissions([...emissions].sort((a, b) =>
         a['Country Name'] > b['Country Name'] ? -1 : 1,
       ));
     }
     else {
-      console.log("Set order to asc in (reorderEmissionByCounterName)");
       setOrder('asc');
       setEmissions([...emissions].sort((a, b) =>
         a['Country Name'] > b['Country Name'] ? 1 : -1,
@@ -50,14 +51,12 @@ export default function Content({ startYear, endYear }) {
   function reorderEmissionByValue() {
     setEmissionActive(true);
     if (order === 'asc') {
-      console.log("Set order to desc in (reorderEmissionByValue)");
       setOrder('desc');
       setEmissions([...emissions].sort((a, b) =>
         a[currYear] > b[currYear] ? -1 : 1,
       ));
     }
     else {
-      console.log("Set order to asc in (reorderEmissionByValue)");
       setOrder('asc');
       setEmissions([...emissions].sort((a, b) =>
         a[currYear] > b[currYear] ? 1 : -1,
@@ -101,14 +100,16 @@ export default function Content({ startYear, endYear }) {
       <Table stickyHeader aria-label="sticky table">
         <TableHead>
           <TableRow>
-            <TableCell align='left'><TableSortLabel direction={order} onClick={reorderEmissionByCounterName}>Land</TableSortLabel></TableCell>
+            <TableCell align='left'>
+              <TextField id="standard-basic" label="Land" variant="standard" size='small' onChange={(event) => { setCountryValue(event.target.value); }} />
+            </TableCell>
             <TableCell align='left'><TableSortLabel direction={order} onClick={reorderEmissionByCounterName}>Ländercode</TableSortLabel></TableCell>
             <TableCell align='left'><Form /></TableCell>
             <TableCell align='left'><TableSortLabel direction={order} onClick={reorderEmissionByValue}>Emissionswert</TableSortLabel></TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {emissions.map((data, index) =>
+          {emissions.filter(item => item['Country Name'].toLowerCase().includes(countryValue.toLocaleLowerCase())).map((data, index) =>
             <TableRow key={index}>
               <TableCell align='left' >{data['Country Name']}</TableCell>
               <TableCell align='left' >{data['Country Code']}</TableCell>
@@ -117,7 +118,6 @@ export default function Content({ startYear, endYear }) {
             </TableRow >
           )}
         </TableBody>
-
       </Table>
     </TableContainer>
   );
