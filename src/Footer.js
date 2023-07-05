@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import Divider from '@mui/material/Divider';
@@ -27,7 +27,7 @@ export default function Footer() {
       <Button color='inherit' size='small' onClick={() => handleClickOpen({ type })} >{label}</Button>
     )
   }
-  //<FooterItem label='Datenschutzhinweise' type='policy' />
+
   return (
     <Paper elevation={1} sx={{ mt: 'auto', p: 1 }}>
       <Stack justifyContent="center" direction="row" spacing={2} flexWrap="wrap" divider={<Divider orientation="vertical" flexItem />}>
@@ -36,6 +36,6 @@ export default function Footer() {
       </Stack>
       <Imprint open={dialogContent === 'imprint' ? true : false} onClose={handleClose} TransitionComponent={Transition} keepMounted scroll='paper' />
       <Disclaimer open={dialogContent === 'disclaimer' ? true : false} onClose={handleClose} TransitionComponent={Transition} keepMounted scroll='paper' />
-    </Paper >
+    </Paper>
   );
 }
