@@ -15,7 +15,6 @@ import TextField from '@mui/material/TextField';
 
 import data from './csvjson.json'
 
-
 const range = (start, end) => {
   let output = [];
 
@@ -96,7 +95,7 @@ export default function Content({ startYear, endYear }) {
   }
 
   return (
-    <TableContainer component={Paper} sx={{ maxHeight: 500, mt: 5 }}>
+    <TableContainer component={Paper} sx={{ maxHeight: 500, mt: 5, mb: 2 }}>
       <Table stickyHeader aria-label="sticky table">
         <TableHead>
           <TableRow>
