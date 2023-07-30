@@ -1,24 +1,28 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
-//import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import Image from './img/logo_356.png';
+import Image from './img/GC_.png';
 import Paper from '@mui/material/Paper'
+import Stack from '@mui/material/Stack'
 
-function Logo()
-{
-  return <img src={Image} width="50" height="50" alignitems="center" alt="This should be a Logo"></img>
+function Logo() {
+  return (
+    <Box sx={{ float: 'left' }}>
+      <img src={Image} height="50" alt="This should be a Logo"></img>
+    </Box>
+
+  )
 }
 
-function HeaderBar() {
+export default function HeaderBar() {
   return (
-      <Box component={Paper} sx={{ justifyContent: 'center',  alignitems: 'center', p: 0.5}}>
-        <Logo />
-        <Button size="large">Über uns</Button>
-        <Button size="large">Kontakt</Button>
-      </Box>
+
+    <Stack pr={1} pl={1} component={Paper} alignSelf='center' sx={{ width: 'auto' }} justifyContent="center" direction="row" spacing={1} flexWrap="wrap">
+      <Logo />
+      <Button size="large">Über uns</Button>
+      <Button size="large">CO²-Emissionen</Button>
+      <Button size="large">Kontakt</Button>
+    </Stack>
+
   );
 }
-
-
-export default HeaderBar;

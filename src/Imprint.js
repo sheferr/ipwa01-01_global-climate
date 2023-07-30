@@ -13,7 +13,7 @@ export default function Imprint(props) {
     return (
         <Dialog fullWidth maxWidth='lg' onClose={onClose} {...other} >
             <DialogTitle>
-                <Typography>{"IMPRESSUM"}</Typography>
+                <Typography textTransform={'uppercase'} fontWeight={'bold'} >{"Impressum"}</Typography>
                 <IconButton
                     aria-label="close"
                     onClick={onClose}

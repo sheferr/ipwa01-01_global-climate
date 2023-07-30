@@ -12,7 +12,7 @@ export default function Terms(props) {
     return (
         <Dialog fullWidth maxWidth='lg' onClose={onClose} {...other} >
             <DialogTitle>
-                <Typography>{"DISCLAIMER"}</Typography>
+                <Typography textTransform={'uppercase'} fontWeight={'bold'} >{"Disclaimer"}</Typography>
                 <IconButton
                     aria-label="close"
                     onClick={onClose}
@@ -70,6 +70,6 @@ export default function Terms(props) {
                     <Typography paragraph>Quelle: https://www.juraforum.de/disclaimer_muster/</Typography>
                 </DialogContentText>
             </DialogContent>
-        </Dialog>
+        </Dialog >
     )
 }
