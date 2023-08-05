@@ -1,16 +1,16 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
-import Image from './img/GC_.png';
 import Paper from '@mui/material/Paper'
 import Stack from '@mui/material/Stack'
+
+import Image from './img/GC_Logo.png';
 
 function Logo() {
   return (
     <Box sx={{ float: 'left' }}>
       <img src={Image} height="50" alt="This should be a Logo"></img>
     </Box>
-
   )
 }
 
