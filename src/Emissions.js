@@ -102,9 +102,7 @@ export default function Emissions({ startYear, endYear }) {
 
     return (
         <React.Fragment>
-
-
-            <Typography paragraph pt={5} variant='h4'>CO²-Emmisionen</Typography>
+            <Typography id={"id-emissions"} paragraph pt={5} variant='h4'>CO²-Emmisionen</Typography>
             <Typography paragraph>Die CO2-Emissions-Tabelle enthält detaillierte Daten über die jährlichen Treibhausgasemissionen von Ländern von 1990 bis 2019.
                 Sie liefert einen klaren Überblick über die Veränderungen im Zeitverlauf und ermöglicht eine genaue Bewertung der individuellen Beiträge zum Klimawandel.
                 Diese wichtige Ressource unterstützt Regierungen, Forschungseinrichtungen und Unternehmen bei der Entwicklung wirksamer Klimapolitiken und Maßnahmen zur Emissionsreduktion.

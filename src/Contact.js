@@ -104,7 +104,7 @@ export default function Contact() {
 
     return (
         <React.Fragment>
-            <Card sx={{ my: 3 }}>
+            <Card id={'id-contact'} sx={{ my: 3 }}>
                 <CardHeader subheaderTypographyProps={{}} titleTypographyProps={{ variant: 'h4' }} title="Kontakt" subheader="Kontaktieren Sie uns, um sich über unser Engagement im Kampf gegen den Klimawandel auszutauschen und wie Sie Teil unserer Bemühungen werden können, eine nachhaltigere Zukunft zu gestalten."></CardHeader>
                 <CardContent>
                     <TextField fullWidth margin='normal' error={noNameEntry} onChange={handleName} onBlur={handleFocusName} helperText={noNameEntry && "Bitte gib deinen Namen ein."} value={UserName} id='user-name-txt-field' label='Name' inputProps={{ inputMode: 'text' }} sx={{ display: 'block' }} />

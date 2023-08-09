@@ -14,12 +14,9 @@ const Img = styled('img')({
 });
 
 export default function About() {
-
-
     return (
         <React.Fragment>
-
-            <Grid container spacing={2} borderRadius={5} borderTop={4} borderBottom={4} borderColor={'gray'} mb={2}>
+            <Grid id={"id-about"} container spacing={2} borderRadius={5} borderTop={4} borderBottom={4} borderColor={'gray'} mb={2}>
                 <Grid item xs={12} sm={6} md={8} lg={8} alignSelf='center' >
                     <Typography paragraph variant='h4'>Über uns</Typography>
                     <Typography paragraph>Global Climate ist eine Non-Profit-Organisation, die den globalen Klimawandel bekämpft.
