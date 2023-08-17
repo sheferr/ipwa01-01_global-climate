@@ -19,7 +19,8 @@ export default function About() {
             <Grid id={"id-about"} container spacing={2} borderRadius={5} borderTop={4} borderBottom={4} borderColor={'gray'} mb={2}>
                 <Grid item xs={12} sm={6} md={8} lg={8} alignSelf='center' >
                     <Typography paragraph variant='h4'>Über uns</Typography>
-                    <Typography paragraph>Global Climate ist eine Non-Profit-Organisation, die den globalen Klimawandel bekämpft.
+                    <Typography paragraph>
+                        Global Climate ist eine Non-Profit-Organisation, die den globalen Klimawandel bekämpft.
                         Wir setzen uns leidenschaftlich dafür ein, Bewusstsein zu schaffen, innovative Lösungen zu entwickeln und Zusammenarbeit zu fördern.
                         Unser Team aus Experten arbeitet mit Regierungen, Unternehmen und Gemeinden zusammen, um nachhaltige Praktiken zu fördern und politische Maßnahmen voranzutreiben.
                         Durch Forschung, Bildung und Partnerschaften streben wir eine nachhaltige und gerechte Zukunft für unseren Planeten an.
