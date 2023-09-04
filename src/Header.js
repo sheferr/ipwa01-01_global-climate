@@ -5,6 +5,13 @@ import ButtonBase from '@mui/material/ButtonBase';
 import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
 
+// Sprache
+import {
+  FormControl,
+  InputLabel,
+  Select,
+} from '@mui/material';
+
 // mobile version imports
 import AppBar from '@mui/material/AppBar';
 import IconButton from '@mui/material/IconButton';
@@ -28,12 +35,28 @@ function Logo(props) {
 }
 
 
-export default function Header() {
+export default function Header(props) {
+
+  const { setDirection } = props;
 
   const pages = ['Über uns', 'CO²-Emissionen', 'Kontakt'];
   const page_id = ['id-about', 'id-emissions', 'id-contact'];
+  const languages = [{
+    id: 0,
+    lang: "Deutsch",
+    dir: "ltr",
+  }, {
+    id: 1,
+    lang: "English",
+    dir: "ltr",
+  }, {
+    id: 2,
+    lang: "Arabic",
+    dir: "rtl",
+  }];
 
   const [anchorNav, setAnchorNav] = React.useState(null);
+  const [langSelect, setLangSelect] = React.useState(0);
 
   function handleClickScroll(id) {
     const element = document.getElementById(id);
@@ -51,6 +74,11 @@ export default function Header() {
     setAnchorNav(null);
   }
 
+  const handleChangeLang = (event) => {
+    setLangSelect(event.target.value);
+    setDirection(languages[event.target.value].dir);
+  }
+
   return (
     <AppBar position='static' sx={{ py: 1 }}>
       <Container maxWidth="lg" >
@@ -65,6 +93,15 @@ export default function Header() {
               <Button key={page} size="large" onClick={() => handleClickScroll(page_id[index])}>{page}</Button>
             ))}
           </Box>
+
+          <FormControl variant='filled' sx={{ minWidth: 110 }}>
+            <InputLabel id="input_language_id">Sprache</InputLabel>
+            <Select autoWidth labelId="input_language_id" id="label_lang_id" value={langSelect} onChange={e => handleChangeLang(e)}>
+              {languages.map((lang, index) =>
+                <MenuItem key={index} value={lang.id} >{lang.lang}</MenuItem>
+              )}
+            </Select>
+          </FormControl>
 
           {/* Mobile-Ansicht */}
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
