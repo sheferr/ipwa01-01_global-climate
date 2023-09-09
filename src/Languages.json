@@ -1,0 +1,20 @@
+[
+    {
+        "id": 0,
+        "lang": "Deutsch",
+        "code": "de",
+        "dir": "ltr"
+    },
+    {
+        "id": 1,
+        "lang": "English",
+        "code": "en",
+        "dir": "ltr"
+    },
+    {
+        "id": 2,
+        "lang": "Arabic",
+        "code": "ar",
+        "dir": "rtl"
+    }
+]

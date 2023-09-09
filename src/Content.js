@@ -5,9 +5,7 @@ import About from './About';
 import Contact from './Contact';
 import Emissions from './Emissions';
 
-
 export default function Content() {
-
   return (
     <React.Fragment>
       <Box pt={5}>
@@ -16,6 +14,5 @@ export default function Content() {
         <Contact />
       </Box>
     </React.Fragment >
-
   );
 }

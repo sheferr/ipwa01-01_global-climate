@@ -1,24 +1,30 @@
 import * as React from 'react';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
-import ButtonBase from '@mui/material/ButtonBase';
-import Toolbar from '@mui/material/Toolbar';
-import Container from '@mui/material/Container';
+import {
+  Button,
+  Box,
+  ButtonBase,
+  Toolbar,
+  Container
+} from '@mui/material';
 
 // Sprache
 import {
   FormControl,
   InputLabel,
   Select,
+  Link,
 } from '@mui/material';
+import languages from './Languages.json';
 
 // mobile version imports
-import AppBar from '@mui/material/AppBar';
-import IconButton from '@mui/material/IconButton';
+import {
+  AppBar,
+  IconButton,
+  Menu,
+  MenuItem,
+  Typography
+} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import Typography from '@mui/material/Typography';
 
 // Logo importieren
 import Image from './img/GC_Logo.png';
@@ -34,29 +40,24 @@ function Logo(props) {
   )
 }
 
-
 export default function Header(props) {
 
-  const { setDirection } = props;
-
-  const pages = ['Über uns', 'CO²-Emissionen', 'Kontakt'];
-  const page_id = ['id-about', 'id-emissions', 'id-contact'];
-  const languages = [{
-    id: 0,
-    lang: "Deutsch",
-    dir: "ltr",
-  }, {
-    id: 1,
-    lang: "English",
-    dir: "ltr",
-  }, {
-    id: 2,
-    lang: "Arabic",
-    dir: "rtl",
-  }];
+  const { language } = props;
+  const pages = [
+    {
+      id: 'id-about',
+      value: 'Über uns'
+    },
+    {
+      id: 'id-emissions',
+      value: 'CO²-Emissionen'
+    },
+    {
+      id: 'id-contact',
+      value: 'Kontakt'
+    }];
 
   const [anchorNav, setAnchorNav] = React.useState(null);
-  const [langSelect, setLangSelect] = React.useState(0);
 
   function handleClickScroll(id) {
     const element = document.getElementById(id);
@@ -74,11 +75,6 @@ export default function Header(props) {
     setAnchorNav(null);
   }
 
-  const handleChangeLang = (event) => {
-    setLangSelect(event.target.value);
-    setDirection(languages[event.target.value].dir);
-  }
-
   return (
     <AppBar position='static' sx={{ py: 1 }}>
       <Container maxWidth="lg" >
@@ -90,15 +86,16 @@ export default function Header(props) {
           {/* Desktop-Ansicht */}
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             {pages.map((page, index) => (
-              <Button key={page} size="large" onClick={() => handleClickScroll(page_id[index])}>{page}</Button>
+              <Button key={index} size="large" onClick={() => handleClickScroll(page.id)}>{page.value}</Button>
             ))}
           </Box>
 
+          {/* Sprache */}
           <FormControl variant='filled' sx={{ minWidth: 110 }}>
             <InputLabel id="input_language_id">Sprache</InputLabel>
-            <Select autoWidth labelId="input_language_id" id="label_lang_id" value={langSelect} onChange={e => handleChangeLang(e)}>
+            <Select autoWidth labelId="input_language_id" id="label_lang_id" value={language.id}>
               {languages.map((lang, index) =>
-                <MenuItem key={index} value={lang.id} >{lang.lang}</MenuItem>
+                <MenuItem key={index} value={lang.id} ><Link href={lang.code} underline='none' color="white">{lang.lang}</Link></MenuItem>
               )}
             </Select>
           </FormControl>
@@ -110,8 +107,8 @@ export default function Header(props) {
             </IconButton>
             <Menu anchorEl={anchorNav} keepMounted transformOrigin={{ vertical: 'top', horizontal: 'left', }} open={Boolean(anchorNav)} onClose={handleCloseNavBar} sx={{ display: { xs: 'block', md: 'none' } }}>
               {pages.map((page, index) => (
-                <MenuItem key={page} onClick={() => handleClickScroll(page_id[index])}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem key={index} onClick={() => handleClickScroll(page.id)}>
+                  <Typography textAlign="center">{page.value}</Typography>
                 </MenuItem>
               ))}
             </Menu>

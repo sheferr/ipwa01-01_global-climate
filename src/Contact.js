@@ -1,12 +1,16 @@
 import React from 'react';
+import {
+    TextField,
+    Snackbar,
+    Button
+} from '@mui/material';
 
-import Card from '@mui/material/Card'
-import CardContent from '@mui/material/CardContent';
-import CardHeader from '@mui/material/CardHeader';
-
-import TextField from '@mui/material/TextField';
-import Snackbar from '@mui/material/Snackbar';
-import Button from '@mui/material/Button';
+// Card
+import {
+    Card,
+    CardContent,
+    CardHeader
+} from '@mui/material';
 
 export default function Contact() {
 
@@ -107,7 +111,7 @@ export default function Contact() {
             <Card id={'id-contact'} sx={{ my: 3 }}>
                 <CardHeader subheaderTypographyProps={{}} titleTypographyProps={{ variant: 'h4' }} title="Kontakt" subheader="Kontaktieren Sie uns, um sich über unser Engagement im Kampf gegen den Klimawandel auszutauschen und wie Sie Teil unserer Bemühungen werden können, eine nachhaltigere Zukunft zu gestalten."></CardHeader>
                 <CardContent>
-                    <TextField fullWidth margin='normal' error={noNameEntry} onChange={handleName} onBlur={handleFocusName} helperText={noNameEntry && "Bitte gib deinen Namen ein."} value={UserName} id='user-name-txt-field' label='Name' inputProps={{ inputMode: 'text' }} sx={{ display: 'block' }} />
+                    <TextField fullWidth margin='normal' error={noNameEntry} onChange={handleName} onBlur={handleFocusName} helperText={noNameEntry && "Bitte gib deinen Namen an."} value={UserName} id='user-name-txt-field' label='Name' inputProps={{ inputMode: 'text' }} sx={{ display: 'block' }} />
                     <TextField fullWidth margin='normal' error={noEmailEntry} onChange={handleEmail} onBlur={handleFocusEmail} helperText={noEmailEntry && "Bitte gib deine E-mail-Adresse an."} value={UserEmail} id='email-txt-field' label='E-Mail' inputProps={{ inputMode: 'email' }} sx={{ display: 'block' }} />
                     <TextField fullWidth margin='normal' error={noTextEntry} onChange={handleText} onBlur={handleFocusText} helperText={noTextEntry && "Bitte gib deine Nachricht an."} value={UserTextField} id='filled-basic' multiline rows={6} label='Nachricht' inputProps={{ inputMode: 'text' }} sx={{ display: 'block' }} />
                     <Button variant='contained' onClick={submitContact}>Senden</Button>
